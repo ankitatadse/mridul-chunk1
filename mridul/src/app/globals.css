@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #f7f4ee;
+  --color-surface: #ffffff;
+  --color-ink: #201c1a;
+  --color-muted: #7a756d;
+  --color-wine: #5b2333;
+  --color-wine-soft: #7a3a4b;
+  --color-line: #e4dfd5;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-wine: var(--color-wine);
+  --color-wine-soft: var(--color-wine-soft);
+  --color-line: var(--color-line);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-public-sans);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-public-sans), sans-serif;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-fraunces), serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background: var(--color-wine);
+  color: var(--color-cream);
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-wine);
+  outline-offset: 3px;
+}
