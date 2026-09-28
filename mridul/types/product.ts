@@ -1,0 +1,2 @@
+export type Availability="in_stock"|"out_of_stock"|"price_on_request"|"coming_soon";
+export type Product={id:string;slug:string;name:string;price:number|null;currency:"INR";fabric?:string;category?:string;colours?:string[];images:string[];description?:string;sareeLength?:string;blouseLength?:string;work?:string;care?:string;availabilityStatus:Availability;featured?:boolean;bestseller?:boolean;newArrival?:boolean;restocked?:boolean};

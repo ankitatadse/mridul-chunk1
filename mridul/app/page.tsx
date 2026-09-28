@@ -1,0 +1,16 @@
+import Link from "next/link";import {InstagramStrip,Community,FollowStory,Mood,Fabric,Journal,Benefits} from "@/components/Sections";import Newsletter from "@/components/Newsletter";import Hero from "@/components/Hero";import ProductCard from "@/components/ProductCard";import ProductCarousel from "@/components/ProductCarousel";import {getProducts} from "@/lib/products";
+const Sec=({t,s,children}:{t:string;s?:string;children:React.ReactNode})=><section className="mx-auto max-w-[1440px] px-5 pt-20"><h2 className="font-serif text-4xl md:text-5xl">{t}</h2>{s&&<p className="mb-8 mt-2 text-mute">{s}</p>}{children}</section>;
+export default async function Home(){
+ const all=await getProducts();const news=all.filter(p=>p.newArrival).slice(0,4);const fav=all.filter(p=>p.featured);
+ const cols=[["EVERYDAY","Lightweight sarees made for everyday elegance.","/shop","/img/p1-1.svg"],["MUL COTTON","Soft fabrics, beautiful colours and effortless drapes.","/collections/mul-cotton","/img/p3-1.svg"],["CHIKANKARI","Intricate machine-embroidered detailing on a beautiful Mul Cotton base.","/collections/chikankari","/img/p5-1.svg"]];
+ return <><Hero/>
+ <InstagramStrip/>
+ <Sec t="JUST DROPPED" s="New sarees. New colours. New favourites."><div className="grid grid-cols-2 gap-4 md:grid-cols-4">{news.map(p=><ProductCard key={p.id} p={p}/>)}</div></Sec>
+ <Sec t="EXPLORE THE MRIDUL EDIT"><div className="grid gap-4 md:grid-cols-3">{cols.map(([t,d,h,i])=><Link key={t} href={h} className="group relative block aspect-[3/4] overflow-hidden">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={i} alt="" className="h-full w-full object-cover transition-transform duration-[1500ms] group-hover:scale-105"/><div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-ink/60 to-transparent p-6 text-cream"><h3 className="font-serif text-3xl">{t}</h3><p className="text-sm">{d}</p><span className="mt-3 text-xs tracking-widest">SHOP {t}</span></div></Link>)}</div></Sec>
+ <section className="mx-auto mt-20 grid max-w-[1440px] items-center gap-10 px-5 md:grid-cols-2"><div className="aspect-[4/5] bg-line">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/img/p7-1.svg" alt="" className="h-full w-full object-cover"/></div>
+  <div><h2 className="font-serif text-5xl">THE MUL COTTON EDIT</h2><p className="my-5 max-w-md text-mute">Our 120-count Mul Cotton sarees bring together a lightweight feel, beautiful colours and details designed to make every drape feel special.</p><Link href="/collections/mul-cotton" className="btn">SHOP MUL COTTON →</Link></div></section>
+ <Mood/>
+ <Sec t="THE MRIDUL FAVOURITES" s="Sarees you'll want to wear again and again."><ProductCarousel items={fav}/></Sec>
+ <section className="mx-auto mt-20 max-w-3xl px-5 text-center"><h2 className="font-serif text-5xl">MADE TO BE WORN.</h2><p className="my-5 text-mute">A saree shouldn&apos;t have to wait for the &ldquo;right occasion.&rdquo; Wear it to work. Wear it to dinner. Wear it to celebrations. Wear it simply because you feel like it.</p><Link href="/shop" className="btn">DISCOVER MRIDUL →</Link></section>
+ <Fabric/><Community/><FollowStory/><Journal/><Benefits/><Newsletter/>
+ </>}

@@ -1,0 +1,6 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply bg-cream text-ink font-sans antialiased}
+:focus-visible{outline:2px solid #6B2D3A;outline-offset:2px}
+.btn{@apply inline-block bg-ink text-cream px-6 py-3 text-xs tracking-widest uppercase transition-opacity hover:opacity-80 disabled:opacity-40}
+.btn-o{@apply inline-block border border-ink px-6 py-3 text-xs tracking-widest uppercase transition-colors hover:bg-ink hover:text-cream}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
