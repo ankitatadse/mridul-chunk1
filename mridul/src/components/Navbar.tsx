@@ -33,39 +33,39 @@ export default function Navbar() {
           : "bg-transparent py-6"
       }`}
     >
-      <div className="mx-auto max-w-[1400px] px-5 md:px-10 flex items-center justify-between">
-        <button
-          className="focus-ring md:hidden p-1"
-          aria-label="Open menu"
-          onClick={() => setMobileOpen(true)}
-        >
-          <Menu size={22} />
-        </button>
-
-        <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide">
-          {LINKS.slice(0, 2).map((l) => (
-            <Link key={l.href} href={l.href} className="focus-ring hover:text-wine transition-colors">
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+      <div className="mx-auto max-w-[1400px] px-5 md:px-10 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+        <div className="flex items-center gap-8">
+          <button
+            className="focus-ring md:hidden p-1 justify-self-start"
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+          >
+            <Menu size={22} />
+          </button>
+          <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide">
+            {LINKS.slice(0, 2).map((l) => (
+              <Link key={l.href} href={l.href} className="focus-ring hover:text-wine transition-colors">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
         <Link
           href="/"
-          className="font-display text-2xl md:text-3xl tracking-[0.08em] absolute left-1/2 -translate-x-1/2"
+          className="font-display text-2xl md:text-3xl tracking-[0.08em] whitespace-nowrap"
         >
           {STORE_CONFIG.brand}
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide">
-          {LINKS.slice(2).map((l) => (
-            <Link key={l.href} href={l.href} className="focus-ring hover:text-wine transition-colors">
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4 md:gap-5">
+        <div className="flex items-center justify-end gap-4 md:gap-5">
+          <nav className="hidden md:flex items-center gap-8 text-[13px] tracking-wide mr-2">
+            {LINKS.slice(2).map((l) => (
+              <Link key={l.href} href={l.href} className="focus-ring hover:text-wine transition-colors">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
           <button aria-label="Search" className="focus-ring hidden sm:block hover:text-wine transition-colors">
             <Search size={19} />
           </button>

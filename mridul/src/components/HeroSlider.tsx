@@ -54,7 +54,7 @@ export default function HeroSlider() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-ink/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/35 to-ink/10" />
           <div className="absolute inset-0 flex items-end md:items-center">
             <div className="max-w-[1400px] mx-auto w-full px-5 md:px-10 pb-14 md:pb-0">
               <div className="max-w-md text-cream">
